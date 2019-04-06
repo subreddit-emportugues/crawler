@@ -37,7 +37,7 @@ class Crawler(object):
                 recent_submissions += 1
                 recent_comments += len(submission.comments.list())
             else:
-                print f'{subreddit_model.display_name} -> OK'
+                print '{} -> OK'.format(subreddit_model.display_name)
                 break
 
         self.define_subreddit(subreddit_model, moderators, recent_submissions, recent_comments)
