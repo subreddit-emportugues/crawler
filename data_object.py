@@ -1,4 +1,4 @@
-class DataObject:
+class DataObject(object):
 
 
     def __init__(self):

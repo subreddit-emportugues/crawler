@@ -1,20 +1,23 @@
+from __future__ import with_statement
+from __future__ import absolute_import
 from data_object import DataObject
 from subreddit import Subreddit
 import praw
 import json
 import time
+from io import open
 
 
-class Crawler:
+class Crawler(object):
 
 
     def __init__(self):
-        self.reddit = praw.Reddit('crawler')
+        self.reddit = praw.Reddit(u'crawler')
         self.data_object = DataObject()
     
 
     def read_list(self):
-        with open('res/subreddits-mini', 'r') as f:
+        with open(u'res/subreddits-mini', u'r') as f:
             for name in f:
                 subreddit_model = self.reddit.subreddit(name.rstrip())
                 self.crawl(subreddit_model)
@@ -34,7 +37,7 @@ class Crawler:
                 recent_submissions += 1
                 recent_comments += len(submission.comments.list())
             else:
-                print(f'{subreddit_model.display_name} -> OK')
+                print f'{subreddit_model.display_name} -> OK'
                 break
 
         self.define_subreddit(subreddit_model, moderators, recent_submissions, recent_comments)
@@ -57,5 +60,5 @@ class Crawler:
 
 
     def write_object(self):
-        with open("data/subreddit-data.json", "w") as f:
+        with open(u"data/subreddit-data.json", u"w") as f:
             f.write(json.dumps(self.data_object, default=lambda o: o.__dict__, indent=4))
