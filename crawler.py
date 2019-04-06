@@ -61,4 +61,5 @@ class Crawler(object):
 
     def write_object(self):
         with open(u'data/subreddit-data.json', u'w') as f:
-            f.write(json.dumps(self.data_object, default=lambda o: o.__dict__, indent=4))
+            f.write(json.dumps(self.data_object, default=lambda o: o.__dict__, indent=4).decode("UTF-8"))
+
