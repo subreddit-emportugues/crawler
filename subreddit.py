@@ -1,7 +1,8 @@
 class Subreddit(object):
 
 
-    def __init__(self, name, icon, description, members, age, nsfw, moderators, recent_submissions, recent_comments):
+    def __init__(self, id, name, icon, description, members, age, nsfw, moderators, recent_submissions, recent_comments):
+        self.id = id
         self.name = name
         self.icon = icon
         self.description = description

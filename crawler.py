@@ -2,6 +2,7 @@ from __future__ import with_statement
 from __future__ import absolute_import
 from data_object import DataObject
 from subreddit import Subreddit
+from prawcore import exceptions
 import praw
 import json
 import time
@@ -12,15 +13,23 @@ class Crawler(object):
 
 
     def __init__(self):
-        self.reddit = praw.Reddit(u'crawler')
+        self.reddit = praw.Reddit('crawler')
         self.data_object = DataObject()
     
 
     def read_list(self):
-        with open(u'res/subreddits-mini', u'r') as f:
+        with open('res/subreddits', 'r') as f:
             for name in f:
-                subreddit_model = self.reddit.subreddit(name.rstrip())
-                self.crawl(subreddit_model)
+                s_name = name.rstrip()
+                try:
+                    subreddit_model = self.reddit.subreddit(s_name)
+                    self.crawl(subreddit_model)
+                except exceptions.Forbidden, err:
+                    print '{} is private'.format(s_name)
+                    self.append_subreddit('private', s_name)
+                except exceptions.NotFound, err:
+                    print '{} does not exist'.format(s_name)
+                    self.append_subreddit('unavailable', s_name)
     
 
     def crawl(self, subreddit_model):
@@ -45,6 +54,7 @@ class Crawler(object):
 
     def define_subreddit(self, subreddit_model, moderators, recent_submissions, recent_comments):
         subreddit = Subreddit(
+            self.data_object.get_length(),
             subreddit_model.display_name_prefixed,
             subreddit_model.community_icon,
             subreddit_model.public_description,
@@ -60,6 +70,10 @@ class Crawler(object):
 
 
     def write_object(self):
-        with open(u'data/subreddit-data.json', u'w') as f:
+        with open('../data/subreddits.json', 'w') as f:
             f.write(json.dumps(self.data_object, default=lambda o: o.__dict__, indent=4).decode("UTF-8"))
+    
 
+    def append_subreddit(self, file, subreddit):
+        with open('data/{}.txt'.format(file), 'a') as f:
+            f.write('{}\n'.format(subreddit))
