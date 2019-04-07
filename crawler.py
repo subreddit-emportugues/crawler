@@ -76,4 +76,4 @@ class Crawler(object):
 
     def append_subreddit(self, file, subreddit):
         with open('data/{}.txt'.format(file), 'a') as f:
-            f.write('{}\n'.format(subreddit))
+            f.write('{}\n'.format(subreddit).decode("UTF-8"))
