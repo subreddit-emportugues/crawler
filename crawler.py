@@ -21,10 +21,10 @@ class Crawler:
                 try:
                     subreddit_model = self.reddit.subreddit(s_name)
                     self.crawl(subreddit_model)
-                except exceptions.Forbidden, err:
+                except exceptions.Forbidden as err:
                     print(f'{s_name} is private')
                     self.append_subreddit('private', s_name)
-                except exceptions.NotFound, err:
+                except exceptions.NotFound as err:
                     print(f'{s_name} does not exist')
                     self.append_subreddit('unavailable', s_name)
     
