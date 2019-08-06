@@ -42,9 +42,9 @@ class Crawler(object):
         recent_comments = 0
 
         for submission in subreddit_model.new(limit=None):
-            if submission.created > time.time() - (24*60*60):
+            if submission.created > time.time() - (7*24*60*60):
                 recent_submissions += 1
-                recent_comments += len(submission.comments.list())
+                recent_comments += submission.num_comments
             else:
                 print '{} -> OK'.format(subreddit_model.display_name)
                 break
@@ -75,5 +75,6 @@ class Crawler(object):
     
 
     def append_subreddit(self, file, subreddit):
-        with open('data/{}.txt'.format(file), 'a') as f:
-            f.write('{}\n'.format(subreddit).decode("UTF-8"))
+        with open('data/{}.txt'.format(file), 'r+') as f:
+            if subreddit not in f.read():
+                f.write('{}\n'.format(subreddit).decode("UTF-8"))
