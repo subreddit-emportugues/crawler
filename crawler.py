@@ -42,7 +42,7 @@ class Crawler(object):
         recent_comments = 0
 
         for submission in subreddit_model.new(limit=None):
-            if submission.created > time.time() - (7*24*60*60):
+            if submission.created > time.time() - (7*24*60*60): # 7 days
                 recent_submissions += 1
                 recent_comments += submission.num_comments
             else:
