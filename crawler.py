@@ -12,21 +12,22 @@ class Crawler:
     def __init__(self):
         self.reddit = praw.Reddit('crawler')
         self.data_object = DataObject()
-    
 
+        
     def read_list(self):
-        with open('res/subreddits', 'r') as f:
-            for name in f:
+            for name in reversed(open('../data/subreddits.txt').readlines()):
                 s_name = name.rstrip()
                 try:
                     subreddit_model = self.reddit.subreddit(s_name)
                     self.crawl(subreddit_model)
                 except exceptions.Forbidden as err:
                     print(f'{s_name} is private')
-                    self.append_subreddit('private', s_name)
+                    with open('../data/private.txt', 'a') as f:
+                        f.write(s_name + '\n')
                 except exceptions.NotFound as err:
                     print(f'{s_name} does not exist')
-                    self.append_subreddit('unavailable', s_name)
+                    with open('../data/unavailable.txt', 'a') as f:
+                        f.write(s_name + '\n')
     
 
     def crawl(self, subreddit_model):
@@ -39,7 +40,7 @@ class Crawler:
         recent_comments = 0
 
         for submission in subreddit_model.new(limit=None):
-            if submission.created > time.time() - (24*60*60):
+            if submission.created > time.time() - (7*24*60*60):
                 recent_submissions += 1
                 recent_comments += len(submission.comments.list())
             else:
@@ -69,8 +70,3 @@ class Crawler:
     def write_object(self):
         with open('../data/subreddits.json', 'w') as f:
             f.write(json.dumps(self.data_object, default=lambda o: o.__dict__, indent=4))
-
-
-    def append_subreddit(self, file, subreddit):
-        with open(f'data/{file}.txt', 'a') as f:
-            f.write(f'{subreddit}\n')

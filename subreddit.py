@@ -1,4 +1,4 @@
-class Subreddit:
+class Subreddit(object):
 
 
     def __init__(self, id, name, icon, description, members, age, nsfw, moderators, recent_submissions, recent_comments):
