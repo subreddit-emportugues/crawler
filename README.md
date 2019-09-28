@@ -44,7 +44,7 @@ def __init__(self, id, name, icon, description, members, age, nsfw, moderators, 
     self.moderators = moderators
     self.recent_submissions = recent_submissions
     self.recent_comments = recent_comments
-    ```
+```
 
 Para alterar os valores do objeto JSON, em [crawler.py](https://github.com/subreddit-emportugues/crawler/blob/master/crawler.py), edite:
 ```
