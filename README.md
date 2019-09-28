@@ -89,7 +89,7 @@ Você pode colaborar com o desenvolvimento deste repositório!
 
 ## Demonstração
 
-[Leia o código do crawler para entender como funciona.](https://github.com/subreddit-emportugues/crawler/blob/master/start.py) ![](/crawler.gif)
+[Leia o código do crawler para entender como o código deste repositório funciona.](https://github.com/subreddit-emportugues/crawler/blob/master/start.py) ![](/crawler.gif)
 
 ## Referências
 
