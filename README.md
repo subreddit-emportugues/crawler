@@ -6,7 +6,7 @@ Crawler que coleta várias informações sobre subreddits linkados em postagens 
 
 O crawler confere a lista de subreddits e utiliza [PRAW](https://praw.readthedocs.io/en/latest/#) para se autenticar, obter dados dos subreddits publicados no subreddit utilizando [Reddit JSON API](https://github.com/reddit-archive/reddit/wiki/json) e gerar um banco de dados em um arquivo JSON além de salvar subreddits privados ou banidos da lista em arquivos TXT.
 
-A coleta de dados processada pelo crawler possibilita a leitura de baixo para cima da lista com `reversed()` registrando subreddits privados e banidos em listas diferentes com `Exception` e serializando dados dos subreddits listados num arquivo JSON com `DataObject()` e `json.dumps` além de registrar a data com `datetime`.
+A coleta de dados processada pelo crawler possibilita a leitura de baixo para cima da lista com `reversed()` registrando subreddits privados e banidos em listas diferentes com `Exception` e serializando dados extraídos dos subreddits listados num arquivo JSON com `DataObject()` e `json.dumps` além de registrar a data com `datetime`.
 
 As informações salvas pelo crawler são: `display_name_prefixed`, `community_icon`, `public_description`, `subscribers`, `created`, `over18`, `moderator()` e `comment.list` e `datetime.now()`.
 
