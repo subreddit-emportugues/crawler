@@ -4,7 +4,7 @@
 
 Crawler que coleta várias informações sobre subreddits linkados em postagens no subreddit [r/EmPortugues](https://www.reddit.com/r/EmPortugues/).
 
-O crawler confere a lista de subreddits e utiliza [PRAW](https://praw.readthedocs.io/en/latest/#) para se autenticar, obter dados dos subreddits publicados no subreddit utilizando [Reddit JSON API](https://github.com/reddit-archive/reddit/wiki/json) e gerar um banco de dados em um arquivo JSON além de salvar subreddits privados ou banidos da lista em arquivos TXT.
+O crawler confere a lista de subreddits e utiliza [PRAW](https://praw.readthedocs.io/en/latest/#) para se autenticar, obter dados dos subreddits publicados no subreddit utilizando [Reddit JSON API](https://github.com/reddit-archive/reddit/wiki/json) e serializar os dados num arquivo JSON além de salvar subreddits privados ou banidos da lista em arquivos TXT.
 
 A coleta de dados processada pelo crawler possibilita a leitura de baixo para cima da lista com `reversed()` registrando subreddits privados e banidos em listas diferentes com `Exception` e serializando dados extraídos dos subreddits listados num arquivo JSON com `DataObject()` e `json.dumps` além de registrar a data com `datetime`.
 
@@ -19,11 +19,10 @@ As informações salvas pelo crawler são: `display_name_prefixed`, `community_i
 * [Referências](#Referências)
 
 ## Instalação
-1. Baixe o repositório;
-2. descomprima o arquivo;
-3. execute um interpretador de comandos;
-4. navegue até a pasta;
-5. e rode "py bot.py".
+1. Clone o repositório;
+2. execute um interpretador de comandos;
+3. navegue até a pasta;
+4. e rode `py start.py`.
 
 ## Instruções
 Para alterar o caminho da lista, em [crawler.py](https://github.com/subreddit-emportugues/crawler/blob/master/crawler.py), edite:
@@ -89,7 +88,7 @@ Você pode colaborar com o desenvolvimento deste repositório!
 
 ## Demonstração
 
-[Leia o código do crawler para entender como o código deste repositório funciona.](https://github.com/subreddit-emportugues/crawler/blob/master/start.py) ![](/crawler.gif)
+[Leia o código do crawler para entender como o código deste repositório funciona.](https://github.com/subreddit-emportugues/crawler/blob/master/start.py)
 
 ## Referências
 
