@@ -4,7 +4,7 @@
 
 Crawler que coleta várias informações sobre subreddits linkados em postagens no subreddit [r/EmPortugues](https://www.reddit.com/r/EmPortugues/).
 
-O crawler confere a lista de subreddits e utiliza [PRAW](https://praw.readthedocs.io/en/latest/#) para se autenticar, obter dados dos subreddits publicados no subreddit utilizando [Reddit JSON API](https://github.com/reddit-archive/reddit/wiki/json) e serializar os dados num arquivo JSON além de salvar subreddits privados ou banidos da lista em arquivos TXT.
+O crawler confere a lista de subreddits e utiliza [PRAW](https://praw.readthedocs.io/en/latest/#) em modo somente leitura para obter dados dos subreddits publicados no subreddit utilizando [Reddit JSON API](https://github.com/reddit-archive/reddit/wiki/json) e serializar os dados num arquivo JSON além de salvar subreddits privados ou banidos da lista em arquivos TXT.
 
 A coleta de dados processada pelo crawler possibilita a leitura de baixo para cima da lista com `reversed()` registrando subreddits privados e banidos em listas diferentes com `Exception` e serializando dados extraídos dos subreddits listados num arquivo JSON com `DataObject()` e `json.dumps` além de registrar a data com `datetime`.
 
@@ -15,7 +15,6 @@ As informações salvas pelo crawler são: `display_name_prefixed`, `community_i
 * [Instruções](#Instruções)
 * [Dependências](#Dependências)
 * [Colaboração](#Colaboração)
-* [Demonstração](#Demonstração)
 * [Referências](#Referências)
 
 ## Instalação
@@ -85,10 +84,6 @@ import datetime
 Você pode colaborar com o desenvolvimento deste repositório!
 
 [Confira os kanbans deste projeto](https://github.com/orgs/subreddit-emportugues/projects/2), [entre em contato com a equipe de moderação](https://reddit.com/message/compose?to=/r/EmPortugues) e [participe da equipe de desenvolvimento](https://github.com/orgs/subreddit-emportugues/teams/desenvolvedores) para saber a respeito do progresso deste repositório caso queira colaborar antes de [reportar um novo problema](https://github.com/subreddit-emportugues/aplicativo/issues) ou [solicitar o recebimento de uma modificação](https://github.com/subreddit-emportugues/aplicativo/pulls).
-
-## Demonstração
-
-[Leia o código do crawler para entender como o código deste repositório funciona.](https://github.com/subreddit-emportugues/crawler/blob/master/start.py)
 
 ## Referências
 
