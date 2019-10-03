@@ -81,7 +81,7 @@ import datetime
 
 ## Colaboração
 
-Você pode colaborar com o desenvolvimento deste repositório!
+Você pode colaborar com o desenvolvimento deste projeto!
 
 [Confira os kanbans deste projeto](https://github.com/orgs/subreddit-emportugues/projects/2), [entre em contato com a equipe de moderação](https://reddit.com/message/compose?to=/r/EmPortugues) e [participe da equipe de desenvolvimento](https://github.com/orgs/subreddit-emportugues/teams/desenvolvedores) para saber a respeito do progresso deste repositório caso queira colaborar antes de [reportar um novo problema](https://github.com/subreddit-emportugues/aplicativo/issues) ou [solicitar o recebimento de uma modificação](https://github.com/subreddit-emportugues/aplicativo/pulls).
 
