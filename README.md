@@ -93,4 +93,4 @@ Você pode colaborar com o desenvolvimento deste projeto!
 * Repositório: https://github.com/subreddit-emportugues/crawler
 * Projeto: https://github.com/orgs/subreddit-emportugues/projects/2
 * Equipe: https://github.com/orgs/subreddit-emportugues/teams/desenvolvedores
-* Licença: 
+* Licença: https://github.com/subreddit-emportugues/crawler/blob/master/LICENSE
