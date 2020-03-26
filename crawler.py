@@ -1,19 +1,21 @@
 from data_object import DataObject
+from io import open
 from subreddit import Subreddit
 from prawcore import exceptions
-import praw
 import json
+import praw
 import time
 
 
-class Crawler:
+
+class Crawler(object):
 
 
     def __init__(self):
         self.reddit = praw.Reddit('crawler')
         self.data_object = DataObject()
+    
 
-        
     def read_list(self):
             for name in reversed(open('../data/subreddits.txt').readlines()):
                 s_name = name.rstrip()
@@ -21,11 +23,11 @@ class Crawler:
                     subreddit_model = self.reddit.subreddit(s_name)
                     self.crawl(subreddit_model)
                 except exceptions.Forbidden as err:
-                    print(f'{s_name} is private')
+                    print('{s_name} is private')
                     with open('../data/private.txt', 'a') as f:
                         f.write(s_name + '\n')
                 except exceptions.NotFound as err:
-                    print(f'{s_name} does not exist')
+                    print('{s_name} does not exist')
                     with open('../data/unavailable.txt', 'a') as f:
                         f.write(s_name + '\n')
     
@@ -42,9 +44,9 @@ class Crawler:
         for submission in subreddit_model.new(limit=None):
             if submission.created > time.time() - (24*60*60):
                 recent_submissions += 1
-                recent_comments += len(submission.comments.list())
+                recent_comments += submission.num_comments
             else:
-                print(f'{subreddit_model.display_name} -> OK')
+                print('{} -> OK'.format(subreddit_model.display_name))
                 break
 
         self.define_subreddit(subreddit_model, moderators, recent_submissions, recent_comments)

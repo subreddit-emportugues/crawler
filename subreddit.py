@@ -12,3 +12,4 @@ class Subreddit(object):
         self.moderators = moderators
         self.recent_submissions = recent_submissions
         self.recent_comments = recent_comments
+        
